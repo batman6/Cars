@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, ScrollView, ActivityIndicator, View, Text, Card, Button } from 'react-native';
 import firebase from '../Firebase';
 
-export default class CarDetailScreen extends Component {
+class CarDetailScreen extends Component {
   static navigationOptions = {
     title: 'Car Details',
   };
@@ -56,7 +56,6 @@ export default class CarDetailScreen extends Component {
       )
     }
     return (
-      <ScrollView>
         <Card style={styles.container}>
           <View style={styles.subContainer}>
             <View>
@@ -91,7 +90,6 @@ export default class CarDetailScreen extends Component {
               onPress={() => this.deleteCar(this.state.key)} />
           </View>
         </Card>
-      </ScrollView>
     );
   }
 }
@@ -119,3 +117,5 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 })
+
+export default CarDetailScreen;

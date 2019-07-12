@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput, Button } from 'react-native';
 import firebase from '../Firebase';
 
-export default class AddCarScreen extends Component {
+class AddCarScreen extends Component {
   static navigationOptions = {
     title: 'Add Car',
   };
@@ -56,7 +56,7 @@ export default class AddCarScreen extends Component {
       )
     }
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.subContainer}>
           <TextInput
               placeholder={'Name'}
@@ -87,7 +87,7 @@ export default class AddCarScreen extends Component {
             title='Save'
             onPress={() => this.saveCar()} />
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -114,3 +114,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
+export default AddCarScreen;

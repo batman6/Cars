@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, ScrollView, ActivityIndicator, View, List, ListItem, Button } from 'react-native';
 import firebase from '../Firebase';
 
-export default class CarScreen extends Component {
+class CarScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Car List',
@@ -54,7 +54,6 @@ export default class CarScreen extends Component {
       );
     }
     return (
-      <ScrollView style={styles.container}>
         <List>
           {
             this.state.cars.map((item, i) => (
@@ -71,7 +70,6 @@ export default class CarScreen extends Component {
             ))
           }
         </List>
-      </ScrollView>
     );
   }
 }
@@ -96,3 +94,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+export default CarScreen;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, ScrollView, ActivityIndicator, View, TextInput, Button } from 'react-native';
 import firebase from '../Firebase';
 
-export default class EditCarScreen extends Component {
+class EditCarScreen extends Component {
   static navigationOptions = {
     title: 'Edit Car',
   };
@@ -61,55 +61,53 @@ export default class EditCarScreen extends Component {
       });
       this.props.navigation.navigate('Car');
     })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-      this.setState({
-        isLoading: false,
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+        this.setState({
+          isLoading: false,
+        });
       });
-    });
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
+    if (this.state.isLoading) {
+      return (
         <View style={styles.activity}>
-          <ActivityIndicator size="large" color="#0000ff"/>
+          <ActivityIndicator size="large" color="#0000ff" />
         </View>
       )
     }
     return (
-      <ScrollView style={styles.container}>
+      <View><View style={styles.subContainer}>
+        <TextInput
+          placeholder={'Name'}
+          value={this.state.name}
+          onChangeText={(text) => this.updateTextInput(text, 'name')}
+        />
+      </View>
         <View style={styles.subContainer}>
           <TextInput
-              placeholder={'Name'}
-              value={this.state.name}
-              onChangeText={(text) => this.updateTextInput(text, 'name')}
+            multiline={true}
+            numberOfLines={4}
+            placeholder={'Color'}
+            value={this.state.color}
+            onChangeText={(text) => this.updateTextInput(text, 'color')}
           />
         </View>
         <View style={styles.subContainer}>
           <TextInput
-              multiline={true}
-              numberOfLines={4}
-              placeholder={'Color'}
-              value={this.state.color}
-              onChangeText={(text) => this.updateTextInput(text, 'color')}
-          />
-        </View>
-        <View style={styles.subContainer}>
-          <TextInput
-              placeholder={'Model'}
-              value={this.state.model}
-              onChangeText={(text) => this.updateTextInput(text, 'model')}
+            placeholder={'Model'}
+            value={this.state.model}
+            onChangeText={(text) => this.updateTextInput(text, 'model')}
           />
         </View>
         <View style={styles.button}>
           <Button
             large
-            leftIcon={{name: 'update'}}
+            leftIcon={{ name: 'update' }}
             title='Update'
             onPress={() => this.updateCar()} />
-        </View>
-      </ScrollView>
+        </View></View>
     );
   }
 }
@@ -136,3 +134,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 })
+
+export default EditCarScreen;
